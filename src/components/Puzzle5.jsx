@@ -4,10 +4,30 @@ import { Link } from 'react-router-dom';
 
 function Puzzle5() {
   const [ list , setList ] = useState(data5);
+  const [timer, setTimer] = useState(0);
+  const [isRunning , setIsRunning] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("drg-puzzle-5", JSON.stringify(list))
   }, [])
+
+  useEffect(() => {
+    if (isRunning) {
+      const interval = setInterval(() => {
+        setTimer((prevTimer) => prevTimer + 1);
+      }, 1000);
+
+      return () => clearInterval(interval);
+    }
+  }, [isRunning]);
+
+  useEffect(() => {
+    if (timer === 210) {
+      setIsRunning(false);
+      alert("Time's up");
+      setTimer(0); // Reset timer
+    }
+  }, [timer]);
 
   const dragItem = useRef();
   const dragOverItem = useRef();
@@ -47,6 +67,9 @@ function Puzzle5() {
     setList(response)
   }
 
+  const startTimer = () => {
+    setIsRunning(true);
+  }
 
   // button Classes
   const btnClasses = "bg-orange-500 px-2 py-0.5 text-gray-100 rounded-sm mb-10"
@@ -74,6 +97,14 @@ function Puzzle5() {
         })}
       </div>
       <div className="btn-div" >
+        <button 
+          className={btnClasses}
+          onClick={startTimer}
+        
+        >
+          Start timer
+        </button>
+        {timer}
         <button 
           onClick={handleClickReset}
           className={btnClasses}
