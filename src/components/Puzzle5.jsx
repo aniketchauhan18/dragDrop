@@ -2,13 +2,19 @@ import { useState, useRef , useEffect } from 'react'
 import data5 from "../utils/data5"
 import { Link } from 'react-router-dom';
 
+// function getRandomNumber(n) {
+//   return Math.floor(Math.random() * n) + 1;
+// }
+// const randomNumber = getRandomNumber(15);
+// console.log(randomNumber)
+
 function Puzzle5() {
   const [ list , setList ] = useState(data5);
   const [timer, setTimer] = useState(0);
   const [isRunning , setIsRunning] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem("drg-puzzle-5", JSON.stringify(list))
+    localStorage.setItem("drg-puzzle-5", JSON.stringify(list));
   }, [])
 
   useEffect(() => {
@@ -22,12 +28,24 @@ function Puzzle5() {
   }, [isRunning]);
 
   useEffect(() => {
-    if (timer === 210) {
+    if (timer === 90) {
       setIsRunning(false);
       alert("Time's up");
       setTimer(0); // Reset timer
     }
   }, [timer]);
+
+  // useEffect(() => {
+  //   let newList = []
+  //   function getRandomNumber(num)  {
+  //     return Math.floor(Math.random() * num) + 1;
+  //   }
+  //   for(let i = 0; i<=15; i++) {
+
+  //   }
+
+  // }, [])
+
 
   const dragItem = useRef();
   const dragOverItem = useRef();
@@ -87,8 +105,8 @@ function Puzzle5() {
             >
               <img src={item.img} className="img-piece" 
                 style={{
-                  width: 140,
-                  height: 140
+                  width: 160,
+                  height: 160
                 }}
               />
                 {/* {item.content} */}

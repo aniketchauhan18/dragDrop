@@ -22,7 +22,7 @@ function Puzzle4() {
   }, [isRunning]);
 
   useEffect(() => {
-    if (timer === 210) {
+    if (timer === 90) {
       setIsRunning(false);
       alert("Time's up");
       setTimer(0); // Reset timer
@@ -87,8 +87,8 @@ function Puzzle4() {
             >
               <img src={item.img} className="img-piece" 
                 style={{
-                  width: 140,
-                  height: 140
+                  width: 160,
+                  height: 160
                 }}
               />
                 {/* {item.content} */}

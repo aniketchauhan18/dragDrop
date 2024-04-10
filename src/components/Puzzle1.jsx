@@ -22,7 +22,7 @@ function Puzzle1() {
   }, [isRunning]);
 
   useEffect(() => {
-    if (timer === 210) {
+    if (timer === 90) {
       setIsRunning(false);
       alert("Times up");
       setTimer(0); // Reset timer
@@ -85,14 +85,11 @@ function Puzzle1() {
               key={index} 
               draggable
               onDragEnd={drop}
-              style={{
-                backgroundColor: item.backgroundColor
-              }}
             >
               <img src={item.img} className="img-piece" 
                 style={{
-                  width: 140,
-                  height: 140
+                  width: 160,
+                  height: 160
                 }}
               />
                 {/* {item.content} */}
@@ -107,7 +104,9 @@ function Puzzle1() {
         >
           Start timer
         </button>
-        {timer}
+        <div className='flex justify-center'>
+          {timer}
+        </div>
         <button 
           onClick={handleClickReset}
           className={btnClasses}

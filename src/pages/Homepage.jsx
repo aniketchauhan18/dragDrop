@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Homepage() {
   const linkBgClasses = "p-5 w-full flex justify-center items-center"
-  const linkClasses = "p-2 rounded-sm bg-slate-500 w-1/3 flex justify-center"
+  const linkClasses = "p-2 rounded-md text-xl w-1/3 flex justify-center"
    return (
     <div className="flex flex-col justify-center items-center h-dvh text-white w-full">
       <div className={linkBgClasses}>
